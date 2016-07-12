@@ -19,6 +19,7 @@ The examples below reflect in a more simple way the complete source code.
 
 Some words on the checked-in source code. Startup anything related to the bus OR Akka. Both at the same time doesn't make sense. 
 Startable is anything which extends 'App'. To trigger an initial communication use 'TriggerHelper' (This will send an event).
+For the bus implementation, there is no problem to start a service multiple times (the broker will - by default - use round-robin to spread the messages).
 
 --------------------- Core ------------------------
 
