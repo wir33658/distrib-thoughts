@@ -1,0 +1,11 @@
+logs
+target
+project
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+/bin/
+/play.bat
+/conf/custom.conf
+/conf/mycrt.crt
