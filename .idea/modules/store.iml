@@ -32,5 +32,14 @@
     <orderEntry type="library" name="SBT: com.typesafe.akka:akka-remote_2.11:2.4.7:jar" level="project" />
     <orderEntry type="library" name="SBT: io.netty:netty:3.10.3.Final:jar" level="project" />
     <orderEntry type="library" name="SBT: org.uncommons.maths:uncommons-maths:1.2.2a:jar" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../src/main/resources" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
