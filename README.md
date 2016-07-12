@@ -17,7 +17,7 @@ The core implementation of the service interface will contain the real logic.
 
 The examples below reflect in a more simple way the complete source code.
 
-Some words on the checked-in source code. Actually it is written to either start the bus environment or the Akka environment (whereas here the bus is used for the evens). Startable is anything which ends with either 'BusApp' or 'ActorApp'. To trigger an initial communication use 'TriggerHelper' (This will send an event).
+Some words on the checked-in source code. Actually it is written to either start the bus environment or the Akka environment (whereas here the bus is used for the events). Startable is anything which ends with either 'BusApp' or 'ActorApp'. To trigger an initial communication use 'TriggerHelper' (This will send an event).
 For the bus implementation, there is no problem to start a service multiple times (the broker will - by default - use round-robin to spread the messages).
 
 --------------------- Core ------------------------
