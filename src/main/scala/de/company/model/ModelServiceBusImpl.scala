@@ -9,8 +9,8 @@ import scala.concurrent.Future
 class ModelServiceBusImpl(bus: Bus, modelService: ModelService) extends ModelService {
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  bus.reply(CommandSubjects.modelBase + Commands.ModelGetCmd, get)
-  bus.reply(CommandSubjects.modelBase + Commands.ModelSwitchCmd, switchReply)
+  bus.registerReplyCallback(CommandSubjects.modelBase + Commands.ModelGetCmd, get)
+  bus.registerReplyCallback(CommandSubjects.modelBase + Commands.ModelSwitchCmd, switchReply)
 
   def get(modelId: String):Future[String] = modelService.get(modelId)
   def switch():Future[Boolean] =

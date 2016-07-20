@@ -1,5 +1,7 @@
 package de.company.bus
 
+import de.TransStarterCommand.TransStarterCommand
+
 object Commands {
   val TransStartCmd               = "TransStartCmd"
   val TransStatusCmd              = "TransStatusCmd"
@@ -10,4 +12,7 @@ object Commands {
   val ModelSwitchCmd              = "ModelSwitchCmd"
   val BlobStoreGetCmd             = "BlobStoreGetCmd"
   val BlobStoreStoreCmd           = "BlobStoreStoreCmd"
+
+//  val ts = TransStarterCommand.
+//  ts.
 }

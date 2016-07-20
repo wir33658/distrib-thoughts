@@ -9,7 +9,7 @@ trait PubSub {
 
 trait ReqRep {
   def request(subject: String, msg: String):Future[String]
-  def reply(subject: String, callback: String => Future[String])
+  def registerReplyCallback(subject: String, callback: String => Future[String])
 }
 
 trait Bus extends PubSub with ReqRep

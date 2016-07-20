@@ -1,7 +1,8 @@
 package de.company
 
-import java.util.concurrent.{TimeUnit, Executors}
+import java.util.concurrent.{Executors, TimeUnit}
 
+import de.TransStarterCommand.TransStarterCommand
 import de.company.bus._
 import de.company.bus.rabbitMQ.BusImpl
 
@@ -15,7 +16,9 @@ object TriggerHelper extends App with Idler {
 
   val bus: Bus = new BusImpl
 //  bus.publish(Subject.transBase + Events.StartTransformationTriggerEvent, "Some bla")
-  bus.request(CommandSubjects.transBase + Commands.TransStartCmd, "Some bla") map { reply =>
+  val cmdName = TransStarterCommand.descriptor.name
+  //val cmd = TransStarterCommand().
+  bus.request(CommandSubjects.transBase + cmdName, "Some bla") map { reply =>
     println(s"TriggerHelper : reply = '$reply'")
   }
   idle(200)
@@ -59,7 +62,7 @@ class ServerTest(name: String) extends Common {
   import scala.concurrent.ExecutionContext.Implicits.global
 
   val bus = new BusImpl
-  bus.reply(command1Subject, command1)
+  bus.registerReplyCallback(command1Subject, command1)
 
   println(s"ServerTest $name up")
 

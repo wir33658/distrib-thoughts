@@ -9,8 +9,8 @@ import scala.concurrent.Future
 class BlobStoreServiceBusImpl(bus: Bus, blobStoreService: BlobStoreService) extends BlobStoreService {
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  bus.reply(CommandSubjects.blobStoreBase + Commands.BlobStoreStoreCmd, store)
-  bus.reply(CommandSubjects.blobStoreBase + Commands.BlobStoreGetCmd, get)
+  bus.registerReplyCallback(CommandSubjects.blobStoreBase + Commands.BlobStoreStoreCmd, store)
+  bus.registerReplyCallback(CommandSubjects.blobStoreBase + Commands.BlobStoreGetCmd, get)
 
   def store(data: String):Future[String] = {
     bus.publish(EventSubjects.blobStoreBase + Events.BlobStoreStartedEvent, Events.BlobStoreStartedEvent)

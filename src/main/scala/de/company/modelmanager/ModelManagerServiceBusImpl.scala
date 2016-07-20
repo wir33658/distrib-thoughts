@@ -12,7 +12,7 @@ import de.company.bus._
 class ModelManagerServiceBusImpl(bus: Bus, blobStoreService: BlobStoreService) extends ModelManagerServiceImpl(blobStoreService) {
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  bus.reply(CommandSubjects.modelManagerBase + Commands.ModelManagerStartImportCmd, startImportReply)
+  bus.registerReplyCallback(CommandSubjects.modelManagerBase + Commands.ModelManagerStartImportCmd, startImportReply)
 
   override def startImport(blobStoreId: String): Future[Boolean] = {
     bus.publish(EventSubjects.transBase + Events.ModelImportStartedEvent, blobStoreId)

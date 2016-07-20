@@ -62,7 +62,7 @@ trait ReqRepImpl extends RabbitMqBasics with ReqRep {
     caller.call(subject, msg)
   }
 
-  def reply(subject: String, callback: String => Future[String]): Unit = {
+  def registerReplyCallback(subject: String, callback: String => Future[String]): Unit = {
     if(!replyListeners.contains(subject)){
 //      val newListener = new Listener(connection, subject, callback)
       val newListener = new Listener(subject, callback)

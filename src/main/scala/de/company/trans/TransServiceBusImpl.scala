@@ -12,8 +12,8 @@ import scala.concurrent.Future
 class TransServiceBusImpl(bus: Bus, transService: TransService) extends TransService {
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  bus.reply(CommandSubjects.transBase + Commands.TransStartCmd, start)
-  bus.reply(CommandSubjects.transBase + Commands.TransStatusCmd, statusReply)
+  bus.registerReplyCallback(CommandSubjects.transBase + Commands.TransStartCmd, start)
+  bus.registerReplyCallback(CommandSubjects.transBase + Commands.TransStatusCmd, statusReply)
 
   def start(rdf: String):Future[String] = {
     bus.publish(EventSubjects.transBase + Events.TransformationStartedEvent, rdf)

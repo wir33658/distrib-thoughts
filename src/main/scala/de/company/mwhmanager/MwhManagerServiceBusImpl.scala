@@ -11,8 +11,8 @@ import scala.concurrent.Future
 class MwhManagerServiceBusImpl(bus: Bus, mwhManagerService: MwhManagerService, modelService: ModelService) extends MwhManagerService {
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  bus.reply(CommandSubjects.mwhManagerBase + Commands.MwhManagerCreateCmd, create)
-  bus.reply(CommandSubjects.mwhManagerBase + Commands.MwhManagerStartImportCmd, startImportReply)
+  bus.registerReplyCallback(CommandSubjects.mwhManagerBase + Commands.MwhManagerCreateCmd, create)
+  bus.registerReplyCallback(CommandSubjects.mwhManagerBase + Commands.MwhManagerStartImportCmd, startImportReply)
 
   bus.subscribe(EventSubjects.transBase + Events.TransformationStartedEvent, transformationStartedListener)
   bus.subscribe(EventSubjects.transBase + Events.TransformationDoneEvent, transformationDoneListener)
