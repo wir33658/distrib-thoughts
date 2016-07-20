@@ -5,7 +5,6 @@ import de.company.bus.rabbitMQ.BusImpl
 import org.scalatest.{FlatSpec, Matchers}
 
 class MonitorSuite extends FlatSpec with Matchers {
-  // implicit val defaultPatience = PatienceConfig(timeout = Span(5, Seconds), interval = Span(500, Millis))
   val bus = new BusImpl
 
   "Monitor Service" should "catch a heartbeat event" in {
