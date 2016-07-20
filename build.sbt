@@ -12,6 +12,8 @@ libraryDependencies += "com.typesafe.akka" % "akka-actor_2.11" % "2.4.7"
 
 libraryDependencies += "com.typesafe.akka" % "akka-remote_2.11" % "2.4.7"
 
+libraryDependencies += "org.scalatest"     %% "scalatest"       % "2.2.6" % "test->*"
+
 PB.protobufSettings
 
 PB.pythonExecutable in PB.protobufConfig := "C:\\Python27\\python.exe"

@@ -24,18 +24,14 @@ trait PubSubImpl extends RabbitMqBasics with PubSub {
 
   def publish(subject: String, msg: String) = {
     // println(s"publish : '$msg' on '$subject'")
-//    publishChannel.exchangeDeclare(subject, "fanout")
     publishChannel.exchangeDeclare(EXCHANGE_NAME, "topic")
-//    publishChannel.basicPublish(subject, "", null, msg.getBytes)
     publishChannel.basicPublish(EXCHANGE_NAME, subject, null, msg.getBytes)
   }
 
   class Subscription(connection: Connection, subject: String, callback: String => Unit) {
     val channel = connection.createChannel()
-//    channel.exchangeDeclare(subject, "fanout")
     channel.exchangeDeclare(EXCHANGE_NAME, "topic")
     val queueName = channel.queueDeclare.getQueue
-//    channel.queueBind(queueName, subject, "")
     channel.queueBind(queueName, EXCHANGE_NAME, subject)
 
     val consumer = new DefaultConsumer(channel) {
@@ -64,7 +60,6 @@ trait ReqRepImpl extends RabbitMqBasics with ReqRep {
 
   def registerReplyCallback(subject: String, callback: String => Future[String]): Unit = {
     if(!replyListeners.contains(subject)){
-//      val newListener = new Listener(connection, subject, callback)
       val newListener = new Listener(subject, callback)
       replyListeners.put(subject, newListener)
     }

@@ -9,6 +9,7 @@ class Monitor(bus: Bus) {
 
   def heartbeat(msg: String): Unit = {
     println(msg)
+    bus.publish(EventSubjects.ack + "Monitor", "ack")
   }
 }
 

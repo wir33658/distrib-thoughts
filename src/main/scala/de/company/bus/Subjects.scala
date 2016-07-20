@@ -7,6 +7,7 @@ class Subjects(val base: String) {
   val modelManagerBase  = base + ".modelmanager."
   val modelBase         = base + ".model."
   val heartbeat         = base + ".heartbeat."
+  val ack               = base + ".ack."
 }
 
 object EventSubjects extends Subjects("de.company.domain.event")
